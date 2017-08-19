@@ -7,8 +7,13 @@ class App extends Component {
   }
 
   render() {
+
     return (
-      <div>hello world!</div>
+      <div>
+        {this.props.categories.map((category, i) =>
+          <p key={i}>{category.name}</p>
+        )}
+      </div>
     )
   }
 }
