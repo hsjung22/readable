@@ -15,6 +15,21 @@ function Home(props) {
           </Link>
         </div>
       )}
+
+
+      <br />
+
+      {props.posts.map(post =>
+        <div key={post.id}>
+          <p>{post.timestamp}</p>
+          <p>{post.title}</p>
+          <p>{post.body}</p>
+          <p>{post.author}</p>
+          <p>{post.category}</p>
+          <p>{post.voteScore}</p>
+          <p>{post.deleted}</p>
+        </div>
+      )}
     </div>
   )
 }

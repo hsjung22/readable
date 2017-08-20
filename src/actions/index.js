@@ -32,5 +32,5 @@ export const fetchPosts = () => dispatch => (
 
 export const fetchDefaults = () => dispatch => (
   dispatch(fetchCategories())
-    .then(dispatch(fetchPosts()))
+    .then(() => dispatch(fetchPosts()))
 )
