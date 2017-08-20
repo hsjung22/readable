@@ -6,4 +6,4 @@ export const fetchCategories = () =>
     headers
   })
     .then(result => result.json())
-    .then(result => result.categories)
+    .then(data => data.categories)

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import RootContainer from '../containers/RootContainer'
+import Category from './Category';
 
 class App extends Component {
 
@@ -7,12 +10,24 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div>
-        {this.props.categories.map((category, i) =>
-          <p key={i}>{category.name}</p>
-        )}
+        <Route
+          exact
+          path='/'
+          component={RootContainer}
+        />
+        <Switch>
+          {this.props.categories.map((category, i) =>
+            <Route
+              key={i}
+              path={`/${category.path}`}
+              render={() => (
+                <Category name={category.name} />
+              )}
+            />
+          )}
+        </Switch>
       </div>
     )
   }
