@@ -15,3 +15,10 @@ export const fetchPosts = () =>
     headers
   })
     .then(result => result.json())
+
+export const fetchComments = (id) =>
+  fetch(`http://localhost:5001/posts/${id}/comments`, {
+    method: 'GET',
+    headers
+  })
+    .then(result => result.json())
