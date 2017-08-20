@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 function Category(props) {
   return(
     <div>
+      <Link to='/'>
+        Home
+      </Link>
       <h1>Category</h1>
       <h1>{props.name} screen</h1>
 
@@ -14,11 +17,6 @@ function Category(props) {
           </Link>
         </div>
       )}
-
-
-      <Link to='/'>
-        Home
-      </Link>
     </div>
   )
 }
