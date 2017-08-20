@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import App from '../components/App';
-import { fetchCategories } from '../actions';
 import { withRouter } from 'react-router-dom'
+import { fetchDefaults } from '../actions';
 
-const mapStateToProps = ({ categories }) => (
-  { categories }
+const mapStateToProps = ({ categories, posts }) => (
+  {
+    categories,
+    posts,
+  }
 )
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchCategories }, dispatch)
+  bindActionCreators({ fetchDefaults }, dispatch)
 )
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

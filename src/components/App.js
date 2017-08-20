@@ -6,10 +6,12 @@ import Category from './Category';
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchCategories()
+    // fetch categories and posts
+    this.props.fetchDefaults()
   }
 
   render() {
+    console.log("APP RENDERED")
     return (
       <div>
         <Route
