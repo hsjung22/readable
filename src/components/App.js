@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import RootContainer from '../containers/HomeContainer'
-import Category from './Category';
+import CategoryContainer from '../containers/CategoryContainer'
 
 class App extends Component {
 
@@ -25,7 +25,7 @@ class App extends Component {
               key={i}
               path={`/${category.path}`}
               render={() => (
-                <Category name={category.name} />
+                <CategoryContainer name={category.name} />
               )}
             />
           )}
