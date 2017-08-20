@@ -8,9 +8,7 @@ function Home(props) {
 
       {props.categories.map((category, i) =>
         <div key={i}>
-          <Link
-            to={`/${category.path}`}
-          >
+          <Link to={`/${category.path}`}>
             {category.name}
           </Link>
         </div>
@@ -21,13 +19,9 @@ function Home(props) {
 
       {props.posts.map(post =>
         <div key={post.id}>
-          <p>time: {post.timestamp}</p>
-          <p>title: {post.title}</p>
-          <p>body: {post.body}</p>
-          <p>author: {post.author}</p>
-          <p>category: {post.category}</p>
-          <p>score: {post.voteScore}</p>
-          <p>deleted: {post.deleted}</p>
+          <Link to={`/${post.category}/${post.id}`}>
+            {post.title}
+          </Link>
         </div>
       )}
     </div>
