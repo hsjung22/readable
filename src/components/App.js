@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RootContainer from '../containers/RootContainer'
+import RootContainer from '../containers/HomeContainer'
 import Category from './Category';
 
 class App extends Component {

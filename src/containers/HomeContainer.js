@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import Root from '../components/Root';
+import Home from '../components/Home';
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = ({ categories }) => (
   { categories }
 )
 
-export default withRouter(connect(mapStateToProps)(Root));
+export default withRouter(connect(mapStateToProps)(Home));

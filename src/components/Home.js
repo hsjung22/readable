@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Root(props) {
+function Home(props) {
   return (
     <div>
-      <h1>Root screen</h1>
+      <h1>Home screen</h1>
 
       {props.categories.map((category, i) =>
         <div key={i}>
@@ -19,4 +19,4 @@ function Root(props) {
   )
 }
 
-export default Root
+export default Home
