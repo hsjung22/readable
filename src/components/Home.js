@@ -21,13 +21,13 @@ function Home(props) {
 
       {props.posts.map(post =>
         <div key={post.id}>
-          <p>{post.timestamp}</p>
-          <p>{post.title}</p>
-          <p>{post.body}</p>
-          <p>{post.author}</p>
-          <p>{post.category}</p>
-          <p>{post.voteScore}</p>
-          <p>{post.deleted}</p>
+          <p>time: {post.timestamp}</p>
+          <p>title: {post.title}</p>
+          <p>body: {post.body}</p>
+          <p>author: {post.author}</p>
+          <p>category: {post.category}</p>
+          <p>score: {post.voteScore}</p>
+          <p>deleted: {post.deleted}</p>
         </div>
       )}
     </div>
