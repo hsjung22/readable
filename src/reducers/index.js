@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_CATEGORIES, RECEIVE_POSTS, RECEIVE_COMMENTS } from '../actions'
+import {
+  RECEIVE_CATEGORIES,
+  RECEIVE_POSTS,
+  RECEIVE_COMMENTS ,
+  ADD_COMMENT
+} from '../actions'
 
 export const categories = (state = [], action) => {
   switch(action.type) {
@@ -23,6 +28,10 @@ export const comments = (state = [], action) => {
   switch(action.type) {
     case RECEIVE_COMMENTS:
       return action.comments
+    case ADD_COMMENT:
+      return (
+        [...state, action.comment]
+      )
     default:
       return state
   }

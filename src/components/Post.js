@@ -8,6 +8,15 @@ class Post extends Component {
     this.props.fetchComments(this.props.id)
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.postComment({
+      body: this.body.value,
+      author: this.author.value,
+      parentId: this.props.id,
+    })
+  }
+
   render() {
     const { post, comments } = this.props
 
@@ -33,6 +42,21 @@ class Post extends Component {
             <p>{comment.voteScore}</p>
           </div>
         )}
+
+        <h1>Add Comment</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" ref={(input) => this.author = input} />
+          </label>
+          <label>
+            Comment:
+            <input type="text" ref={(input) => this.body = input} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+
+
       </div>
     )
   }
