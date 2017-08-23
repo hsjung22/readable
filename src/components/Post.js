@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CommentContainer from '../containers/CommentContainer';
 
 class Post extends Component {
 
@@ -15,6 +16,10 @@ class Post extends Component {
       author: this.author.value,
       parentId: this.props.id,
     })
+
+    // after submitting the request, "clear" the form
+    this.body.value = ''
+    this.author.value = ''
   }
 
   render() {
@@ -32,18 +37,18 @@ class Post extends Component {
         <p>{post.body}</p>
         <p>{post.author}</p>
         <p>{post.category}</p>
+        <p>{post.voteScore}</p>
 
         <h1>Comments</h1>
         {comments.map(comment =>
-          <div key={comment.id}>
-            <p>{comment.timestamp}</p>
-            <p>{comment.body}</p>
-            <p>{comment.author}</p>
-            <p>{comment.voteScore}</p>
-          </div>
+          <CommentContainer
+            key={comment.id}
+            comment={comment}
+          />
         )}
 
         <h1>Add Comment</h1>
+        {/* TODO: abstract comment form */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:

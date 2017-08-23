@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Category from '../components/Category';
 import { withRouter } from 'react-router-dom'
+import Category from '../components/Category'
 
-const mapStateToProps = ({ posts }, props) =>(
+const mapStateToProps = ({ posts }, props) => (
   { posts: posts.filter(post => post.category === props.name) }
 )
 
