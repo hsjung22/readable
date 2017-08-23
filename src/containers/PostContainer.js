@@ -7,7 +7,7 @@ import { fetchComments, postComment } from '../actions';
 const mapStateToProps = ({ posts, comments }, props) =>(
   {
     post: posts.filter(post => post.id === props.id)[0],
-    comments
+    comments: comments.filter(comment => !comment.deleted)
   }
 )
 

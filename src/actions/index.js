@@ -40,17 +40,17 @@ export const setEditComment = commentId => ({
 const fetchCategories = () => dispatch => (
   ReadableAPI
     .fetchCategories()
-    .then(categories => {
+    .then(categories =>
       dispatch(receiveCategories(categories))
-    })
+    )
 )
 
 const fetchPosts = () => dispatch => (
   ReadableAPI
     .fetchPosts()
-    .then(posts => {
+    .then(posts =>
       dispatch(receivePosts(posts))
-    })
+    )
 )
 
 export const fetchDefaults = () => dispatch => (
@@ -61,21 +61,31 @@ export const fetchDefaults = () => dispatch => (
 export const fetchComments = (id) => dispatch => (
   ReadableAPI
     .fetchComments(id)
-    .then(comments => {
+    .then(comments =>
       dispatch(receiveComments(comments))
-    })
+    )
 )
 
 export const postComment = (comment) => dispatch => (
   ReadableAPI
     .postComment(comment)
-    .then(comment => {
+    .then(comment =>
       dispatch(addComment(comment))
-    })
+    )
 )
 
 export const updateComment = (comment) => dispatch => (
   ReadableAPI
     .updateComment(comment)
-    .then(comment => dispatch(receiveComment(comment)))
+    .then(comment =>
+      dispatch(receiveComment(comment))
+    )
+)
+
+export const deleteComment = (commentId) => dispatch => (
+  ReadableAPI
+    .deleteComment(commentId)
+    .then(comment => {
+      dispatch(receiveComment(comment))
+    })
 )
