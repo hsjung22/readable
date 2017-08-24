@@ -6,6 +6,14 @@ function Home(props) {
     <div>
       <h1>Home screen</h1>
 
+      <br />
+
+      <Link to="/posts/new">
+        New Post
+      </Link>
+
+      <br />
+
       {props.categories.map((category, i) =>
         <div key={i}>
           <Link to={`/${category.path}`}>
@@ -13,7 +21,6 @@ function Home(props) {
           </Link>
         </div>
       )}
-
 
       <br />
 

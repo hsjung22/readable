@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom'
 import Post from '../components/Post';
-import { fetchComments, postComment } from '../actions';
+import { fetchComments, createComment } from '../actions';
 
 const mapStateToProps = ({ posts, comments }, props) =>(
   {
@@ -12,7 +12,7 @@ const mapStateToProps = ({ posts, comments }, props) =>(
 )
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchComments, postComment }, dispatch)
+  bindActionCreators({ fetchComments, createComment }, dispatch)
 )
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));

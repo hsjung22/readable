@@ -11,7 +11,7 @@ class Post extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postComment({
+    this.props.createComment({
       body: this.body.value,
       author: this.author.value,
       parentId: this.props.id,

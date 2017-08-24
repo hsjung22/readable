@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import RootContainer from '../containers/HomeContainer'
 import CategoryContainer from '../containers/CategoryContainer'
 import PostContainer from '../containers/PostContainer'
+import PostNewContainer from '../containers/PostNewContainer'
 
 
 class App extends Component {
@@ -20,6 +21,11 @@ class App extends Component {
             exact
             path='/'
             component={RootContainer}
+          />
+          <Route
+            exact
+            path='/posts/new'
+            component={PostNewContainer}
           />
           {this.props.categories.map((category, i) =>
             <Route
