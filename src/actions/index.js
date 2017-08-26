@@ -111,10 +111,17 @@ export const createPost = (post) => dispatch => (
     )
 )
 
-
 export const updatePost = (post) => dispatch => (
   ReadableAPI
     .updatePost(post)
+    .then(post =>
+      dispatch(receivePost(post))
+    )
+)
+
+export const deletePost = (postId) => dispatch => (
+  ReadableAPI
+    .deletePost(postId)
     .then(post =>
       dispatch(receivePost(post))
     )

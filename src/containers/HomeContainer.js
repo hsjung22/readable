@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 const mapStateToProps = ({ categories, posts }) => (
   {
     categories,
-    posts,
+    posts: posts.filter(post => !post.deleted),
   }
 )
 

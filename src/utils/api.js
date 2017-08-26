@@ -81,3 +81,10 @@ export const updatePost = (post) =>
     body: JSON.stringify({...post, timestamp: Date.now()}),
   })
     .then(result => result.json())
+
+export const deletePost = (postId) =>
+  fetch(`${api}/posts/${postId}`, {
+    method: 'DELETE',
+    headers,
+  })
+    .then(result => result.json())
