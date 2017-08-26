@@ -24,14 +24,22 @@ class Post extends Component {
 
   render() {
     const { post, comments } = this.props
-
     return(
       <div>
-        <Link to='/'>
-          Home
-        </Link>
+        <div>
+          <Link to='/'>
+            Home
+          </Link>
+        </div>
+
 
         <h1>Post</h1>
+        <div>
+          <Link to={`/posts/${post.id}/edit`}>
+            Edit
+          </Link>
+        </div>
+
         <p>{post.timestamp}</p>
         <p>{post.title}</p>
         <p>{post.body}</p>

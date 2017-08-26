@@ -1,6 +1,7 @@
 import * as ReadableAPI from '../utils/api'
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'
+export const ADD_POST = 'ADD_POST'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
@@ -13,10 +14,16 @@ const receiveCategories = categories => ({
   categories
 });
 
+
 const receivePosts = posts => ({
   type: RECEIVE_POSTS,
   posts
 });
+
+const addPost = post => ({
+  type: ADD_POST,
+  post
+})
 
 const receivePost = post => ({
   type: RECEIVE_POST,
@@ -99,6 +106,15 @@ export const deleteComment = (commentId) => dispatch => (
 export const createPost = (post) => dispatch => (
   ReadableAPI
     .createPost(post)
+    .then(post =>
+      dispatch(addPost(post))
+    )
+)
+
+
+export const updatePost = (post) => dispatch => (
+  ReadableAPI
+    .updatePost(post)
     .then(post =>
       dispatch(receivePost(post))
     )

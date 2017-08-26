@@ -4,6 +4,7 @@ import RootContainer from '../containers/HomeContainer'
 import CategoryContainer from '../containers/CategoryContainer'
 import PostContainer from '../containers/PostContainer'
 import PostNewContainer from '../containers/PostNewContainer'
+import PostEditContainer from '../containers/PostEditContainer'
 
 
 class App extends Component {
@@ -26,6 +27,10 @@ class App extends Component {
             exact
             path='/posts/new'
             component={PostNewContainer}
+          />
+          <Route
+            path="/posts/:id/edit"
+            component={PostEditContainer}
           />
           {this.props.categories.map((category, i) =>
             <Route

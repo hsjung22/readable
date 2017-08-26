@@ -73,3 +73,11 @@ export const createPost = ({ title, body, author, category }) =>
     }),
   })
     .then(result => result.json())
+
+export const updatePost = (post) =>
+  fetch(`${api}/posts/${post.id}`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify({...post, timestamp: Date.now()}),
+  })
+    .then(result => result.json())
