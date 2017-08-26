@@ -7,7 +7,7 @@ import { fetchDefaults } from '../actions';
 const mapStateToProps = ({ categories, posts }) => (
   {
     categories,
-    posts,
+    posts: posts.filter(post => !post.deleted),
   }
 )
 
