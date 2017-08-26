@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4'
+
 const headers = {
   'Authorization': 'whatever',
   'Content-Type': 'application/json'
@@ -33,7 +35,7 @@ export const createComment = ({ body, author, parentId }) =>
     method: 'POST',
     headers,
     body: JSON.stringify({
-      id: Date.now(),
+      id: uuidv4(),
       timestamp: Date.now(),
       body,
       author,
@@ -62,7 +64,7 @@ export const createPost = ({ title, body, author, category }) =>
     method: 'POST',
     headers,
     body: JSON.stringify({
-      id: Date.now(),
+      id: uuidv4(),
       timestamp: Date.now(),
       title,
       body,
