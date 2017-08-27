@@ -20,10 +20,9 @@ class CommentEdit extends Component {
   }
 
   render() {
-    const { comment } = this.props
+    const { comment, setEditComment } = this.props
     return(
       <div>
-        {/* TODO: abstract comment form */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
@@ -44,6 +43,8 @@ class CommentEdit extends Component {
           <input type="submit" value="Submit" />
         </form>
         <button onClick={()=>{this.handleDelete(comment.id)}}>delete</button>
+
+        <button onClick={() => {setEditComment(null)}}>Cancel</button>
       </div>
     )
   }

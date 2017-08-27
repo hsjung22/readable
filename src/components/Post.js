@@ -79,16 +79,7 @@ class Post extends Component {
         </button>
 
 
-
-        {comments.map(comment =>
-          <CommentContainer
-            key={comment.id}
-            comment={comment}
-          />
-        )}
-
         <h1>Add Comment</h1>
-        {/* TODO: abstract comment form */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
@@ -100,6 +91,14 @@ class Post extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
+
+        {comments.map(comment =>
+          <CommentContainer
+            key={comment.id}
+            comment={comment}
+          />
+        )}
+
 
 
       </div>
