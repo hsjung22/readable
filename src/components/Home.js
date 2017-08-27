@@ -8,11 +8,6 @@ function Home(props) {
       <h1>Home screen</h1>
 
       <br />
-
-      <Link to="/posts/new">
-        New Post
-      </Link>
-
       <br />
 
       {props.categories.map((category, i) =>

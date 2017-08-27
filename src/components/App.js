@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import RootContainer from '../containers/HomeContainer'
 import CategoryContainer from '../containers/CategoryContainer'
 import PostContainer from '../containers/PostContainer'
@@ -17,42 +18,64 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            component={RootContainer}
-          />
-          <Route
-            exact
-            path='/posts/new'
-            component={PostNewContainer}
-          />
-          <Route
-            path="/posts/:id/edit"
-            component={PostEditContainer}
-          />
-          {this.props.categories.map((category, i) =>
+        <nav className="navbar navbar-inverse navbar-fixed-top">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <Link
+                className="navbar-brand"
+                to='/'
+              >
+                Readable
+              </Link>
+
+            </div>
+            <ul className="nav navbar-nav pull-right">
+              <li>
+                <Link to="/posts/new">
+                  New Post
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div className="container">
+          <Switch>
             <Route
-              key={i}
               exact
-              path={`/${category.path}`}
-              render={() => (
-                <CategoryContainer name={category.name} />
-              )}
+              path='/'
+              component={RootContainer}
             />
-          )}
-          {this.props.posts.map(post =>
             <Route
-              key={post.id}
               exact
-              path={`/${post.category}/${post.id}`}
-              render={() => (
-                <PostContainer id={post.id} />
-              )}
+              path='/posts/new'
+              component={PostNewContainer}
             />
-          )}
-        </Switch>
+            <Route
+              path="/posts/:id/edit"
+              component={PostEditContainer}
+            />
+            {this.props.categories.map((category, i) =>
+              <Route
+                key={i}
+                exact
+                path={`/${category.path}`}
+                render={() => (
+                  <CategoryContainer name={category.name} />
+                )}
+              />
+            )}
+            {this.props.posts.map(post =>
+              <Route
+                key={post.id}
+                exact
+                path={`/${post.category}/${post.id}`}
+                render={() => (
+                  <PostContainer id={post.id} />
+                )}
+              />
+            )}
+          </Switch>
+        </div>
       </div>
     )
   }
