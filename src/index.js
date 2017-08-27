@@ -5,9 +5,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import reducer from './reducers';
 import AppContainer from './containers/AppContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
