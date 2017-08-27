@@ -47,7 +47,7 @@ class Post extends Component {
         <p>{post.category}</p>
         <p>{post.voteScore}</p>
 
-        <h1>Comments</h1>
+        <h1>Comments ({comments.length})</h1>
         <button onClick={() => {this.props.toggleSort({ comments: "-voteScore" })}}>
           Vote Score
         </button>
