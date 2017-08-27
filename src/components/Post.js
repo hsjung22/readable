@@ -48,6 +48,16 @@ class Post extends Component {
         <p>{post.voteScore}</p>
 
         <h1>Comments</h1>
+        <button onClick={() => {this.props.toggleSort({ comments: "-voteScore" })}}>
+          Vote Score
+        </button>
+
+        <button onClick={() => {this.props.toggleSort({ comments: "-timestamp" })}}>
+          Date
+        </button>
+
+
+
         {comments.map(comment =>
           <CommentContainer
             key={comment.id}

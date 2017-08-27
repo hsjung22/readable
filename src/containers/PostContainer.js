@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom'
 import sortBy from 'sort-by'
 import Post from '../components/Post';
-import { fetchComments, createComment } from '../actions';
+import { toggleSort, fetchComments, createComment } from '../actions';
 
 const mapStateToProps = ({ posts, comments, sortState }, props) =>(
   {
@@ -16,7 +16,7 @@ const mapStateToProps = ({ posts, comments, sortState }, props) =>(
 )
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchComments, createComment }, dispatch)
+  bindActionCreators({ fetchComments, createComment, toggleSort }, dispatch)
 )
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));
