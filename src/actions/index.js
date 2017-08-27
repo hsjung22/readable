@@ -132,3 +132,19 @@ export const deletePost = (postId) => dispatch => (
       dispatch(receivePost(post))
     )
 )
+
+export const votePost = (postVote) => dispatch => (
+  ReadableAPI
+    .votePost(postVote)
+    .then(post =>
+      dispatch(receivePost(post))
+    )
+)
+
+export const voteComment = (commentVote) => dispatch => (
+  ReadableAPI
+    .voteComment(commentVote)
+    .then(comment =>
+      dispatch(receiveComment(comment))
+    )
+)

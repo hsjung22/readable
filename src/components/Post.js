@@ -40,12 +40,34 @@ class Post extends Component {
           </Link>
         </div>
 
+        <button
+          onClick={() => {
+            this.props.votePost({
+              id: post.id,
+              option: "upVote",
+            })
+          }}
+        >
+          Up
+        </button>
+
+        <button
+          onClick={() => {
+            this.props.votePost({
+              id: post.id,
+              option: "downVote",
+            })
+          }}
+        >
+          Down
+        </button>
+
+        <h5>Vote Score:{post.voteScore}</h5>
         <p>{post.timestamp}</p>
         <p>{post.title}</p>
         <p>{post.body}</p>
         <p>{post.author}</p>
         <p>{post.category}</p>
-        <p>{post.voteScore}</p>
 
         <h1>Comments ({comments.length})</h1>
         <button onClick={() => {this.props.toggleSort({ comments: "-voteScore" })}}>

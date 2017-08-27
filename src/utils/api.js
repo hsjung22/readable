@@ -88,3 +88,19 @@ export const deletePost = (postId) =>
     headers,
   })
     .then(result => result.json())
+
+export const votePost = (postVote) =>
+  fetch(`${api}/posts/${postVote.id}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(postVote),
+  })
+    .then(result => result.json())
+
+export const voteComment = (commentVote) =>
+  fetch(`${api}/comments/${commentVote.id}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(commentVote),
+  })
+    .then(result => result.json())
