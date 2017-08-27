@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment'
+import PostList from './PostList'
 
 function Home(props) {
   return (
@@ -25,24 +25,11 @@ function Home(props) {
 
       <br />
 
-      <button onClick={() => {props.toggleSort({ posts: "-voteScore" })}}>
-        Vote Score
-      </button>
+      <PostList
+        posts={props.posts}
+        toggleSort={props.toggleSort}
+      />
 
-      <button onClick={() => {props.toggleSort({ posts: "-timestamp" })}}>
-        Date
-      </button>
-      <br />
-
-      {props.posts.map(post =>
-        <div key={post.id}>
-          <Link to={`/${post.category}/${post.id}`}>
-            {post.title}
-          </Link>
-          Vote Score: {post.voteScore}
-          Date: {moment(post.timestamp).format("l")}
-        </div>
-      )}
     </div>
   )
 }
