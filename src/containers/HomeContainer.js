@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
 import sortBy from 'sort-by'
 import Home from '../components/Home';
+import { toggleSort } from '../actions'
 
 const mapStateToProps = ({ categories, posts, sortState }) => (
   {
@@ -13,4 +15,9 @@ const mapStateToProps = ({ categories, posts, sortState }) => (
   }
 )
 
-export default withRouter(connect(mapStateToProps)(Home));
+const mapDispatchtoProps = (dispatch) => (
+  bindActionCreators({ toggleSort }, dispatch)
+)
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchtoProps)(Home));

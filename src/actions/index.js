@@ -8,6 +8,7 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const SET_EDIT_COMMENT = 'SET_EDIT_COMMENT'
+export const TOGGLE_SORT = 'TOGGLE_SORT'
 
 const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
@@ -48,6 +49,11 @@ const receiveComment = comment => ({
 export const setEditComment = commentId => ({
   type: SET_EDIT_COMMENT,
   commentId
+})
+
+export const toggleSort = sortBy => ({
+  type: TOGGLE_SORT,
+  sortBy
 })
 
 const fetchCategories = () => dispatch => (
