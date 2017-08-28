@@ -3,20 +3,22 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import sortBy from 'sort-by'
 import Home from '../components/Home';
-import { toggleSort } from '../actions'
+import { toggleSort, setCurrentCategory } from '../actions'
 
-const mapStateToProps = ({ posts, sortState }) => (
+const mapStateToProps = ({ categories, posts, sortState, currentState }) => (
   {
+    categories,
     posts:
       posts
         .filter(post => !post.deleted)
         .sort(sortBy(sortState.posts)),
     sortBy: sortState.posts,
+    currentCategory: currentState.category,
   }
 )
 
 const mapDispatchtoProps = (dispatch) => (
-  bindActionCreators({ toggleSort }, dispatch)
+  bindActionCreators({ toggleSort, setCurrentCategory }, dispatch)
 )
 
 

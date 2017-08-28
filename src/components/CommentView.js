@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-function CommentView({ comment, setEditComment, voteComment, currentlyEditing }) {
+function CommentView({ comment, setCurrentComment, voteComment, currentlyEditing }) {
   return(
     <div>
       <button
@@ -36,7 +36,7 @@ function CommentView({ comment, setEditComment, voteComment, currentlyEditing })
         // disable edit button if an edit is in progress
         disabled={currentlyEditing}
         onClick={() => {
-          setEditComment(comment.id)
+          setCurrentComment(comment.id)
         }}
       >
         edit

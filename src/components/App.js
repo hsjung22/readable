@@ -45,44 +45,46 @@ class App extends Component {
             </ul>
           </div>
         </nav>
-        <div className="container">
-          <Switch>
+
+        <Switch>
+          <Route
+            exact
+            path='/'
+            component={HomeContainer}
+          />
+          {this.props.categories.map((category, i) =>
             <Route
+              key={i}
               exact
-              path='/'
-              component={HomeContainer}
+              path={`/${category.path}`}
+              render={() => (
+                <CategoryContainer name={category.name} />
+              )}
             />
+          )}
+
+
+          <Route
+            exact
+            path='/posts/new'
+            component={PostNewContainer}
+          />
+          <Route
+            path="/posts/:id/edit"
+            component={PostEditContainer}
+          />
+          {this.props.posts.map(post =>
             <Route
+              key={post.id}
               exact
-              path='/posts/new'
-              component={PostNewContainer}
+              path={`/${post.category}/${post.id}`}
+              render={() => (
+                <PostContainer id={post.id} />
+              )}
             />
-            <Route
-              path="/posts/:id/edit"
-              component={PostEditContainer}
-            />
-            {this.props.categories.map((category, i) =>
-              <Route
-                key={i}
-                exact
-                path={`/${category.path}`}
-                render={() => (
-                  <CategoryContainer name={category.name} />
-                )}
-              />
-            )}
-            {this.props.posts.map(post =>
-              <Route
-                key={post.id}
-                exact
-                path={`/${post.category}/${post.id}`}
-                render={() => (
-                  <PostContainer id={post.id} />
-                )}
-              />
-            )}
-          </Switch>
-        </div>
+          )}
+
+        </Switch>
       </div>
     )
   }

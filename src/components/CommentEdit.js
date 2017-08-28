@@ -11,16 +11,16 @@ class CommentEdit extends Component {
       author: this.author.value,
     })
       // switch back to the "view" mode
-      .then(() => this.props.setEditComment(null))
+      .then(() => this.props.setCurrentComment(null))
   }
 
   handleDelete = (commentId) => {
     this.props.deleteComment(commentId)
-      .then(() => this.props.setEditComment(null))
+      .then(() => this.props.setCurrentComment(null))
   }
 
   render() {
-    const { comment, setEditComment } = this.props
+    const { comment, setCurrentComment } = this.props
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -44,7 +44,7 @@ class CommentEdit extends Component {
         </form>
         <button onClick={()=>{this.handleDelete(comment.id)}}>delete</button>
 
-        <button onClick={() => {setEditComment(null)}}>Cancel</button>
+        <button onClick={() => {setCurrentComment(null)}}>Cancel</button>
       </div>
     )
   }

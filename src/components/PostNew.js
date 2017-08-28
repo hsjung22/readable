@@ -19,38 +19,40 @@ class PostNew extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Title:
-          <input
-            type="text"
-            ref={(input) => this.title = input}
-          />
-        </label>
-        <label>
-          Body:
-          <input
-            type="text"
-            ref={(input) => this.body = input}
-          />
-        </label>
-        <label>
-          Author:
-          <input
-            type="text"
-            ref={(input) => this.author = input}
-          />
-        </label>
-        <label>
-          Category:
-          <select ref={(input) => this.category = input}>
-            {this.props.categories.map((category, index) =>
-              <option key={index} value={category}>{category}</option>
-            )}
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Title:
+            <input
+              type="text"
+              ref={(input) => this.title = input}
+            />
+          </label>
+          <label>
+            Body:
+            <input
+              type="text"
+              ref={(input) => this.body = input}
+            />
+          </label>
+          <label>
+            Author:
+            <input
+              type="text"
+              ref={(input) => this.author = input}
+            />
+          </label>
+          <label>
+            Category:
+            <select ref={(input) => this.category = input}>
+              {this.props.categories.map((category, index) =>
+                <option key={index} value={category}>{category}</option>
+              )}
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     )
   }
 }

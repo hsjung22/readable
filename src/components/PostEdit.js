@@ -26,7 +26,7 @@ class PostEdit extends Component {
   render() {
     const { post } = this.props
     return(
-      <div>
+      <div className="container">
         {post &&
           <div>
             <form onSubmit={this.handleSubmit}>

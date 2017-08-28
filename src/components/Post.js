@@ -25,7 +25,7 @@ class Post extends Component {
   render() {
     const { post, comments } = this.props
     return(
-      <div>
+      <div className="container">
         <div>
           <Link to='/'>
             Home
