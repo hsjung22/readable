@@ -15,7 +15,6 @@ const receiveCategories = categories => ({
   categories
 });
 
-
 const receivePosts = posts => ({
   type: RECEIVE_POSTS,
   posts

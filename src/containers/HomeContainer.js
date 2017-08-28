@@ -5,9 +5,8 @@ import sortBy from 'sort-by'
 import Home from '../components/Home';
 import { toggleSort } from '../actions'
 
-const mapStateToProps = ({ categories, posts, sortState }) => (
+const mapStateToProps = ({ posts, sortState }) => (
   {
-    categories,
     posts:
       posts
         .filter(post => !post.deleted)
