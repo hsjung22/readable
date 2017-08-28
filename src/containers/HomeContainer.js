@@ -11,6 +11,7 @@ const mapStateToProps = ({ posts, sortState }) => (
       posts
         .filter(post => !post.deleted)
         .sort(sortBy(sortState.posts)),
+    sortBy: sortState.posts,
   }
 )
 

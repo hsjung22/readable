@@ -70,13 +70,15 @@ class Post extends Component {
         <p>{post.category}</p>
 
         <h1>Comments ({comments.length})</h1>
-        <button onClick={() => {this.props.toggleSort({ comments: "-voteScore" })}}>
-          Vote Score
-        </button>
-
-        <button onClick={() => {this.props.toggleSort({ comments: "-timestamp" })}}>
-          Date
-        </button>
+        <select
+          defaultValue={this.props.sortBy}
+          onChange={(e) => {
+            this.props.toggleSort({ comments: e.target.value })
+          }}
+        >
+          <option value="-voteScore">Vote</option>
+          <option value="-timestamp">Date</option>
+        </select>
 
 
         <h1>Add Comment</h1>

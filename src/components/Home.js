@@ -7,6 +7,7 @@ function Home(props) {
       <PostList
         posts={props.posts}
         toggleSort={props.toggleSort}
+        sortBy={props.sortBy}
       />
     </div>
   )

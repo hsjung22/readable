@@ -17,6 +17,7 @@ const mapStateToProps = ({ posts, comments, sortState }, props) =>(
       comments
         .filter(comment => !comment.deleted)
         .sort(sortBy(sortState.comments)),
+    sortBy: sortState.comments,
   }
 )
 

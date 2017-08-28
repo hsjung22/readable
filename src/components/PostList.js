@@ -6,13 +6,15 @@ function PostList (props) {
   return (
     <div>
       <h3>Posts ({props.posts.length})</h3>
-      <button onClick={() => {props.toggleSort({ posts: "-voteScore" })}}>
-        Vote Score
-      </button>
-
-      <button onClick={() => {props.toggleSort({ posts: "-timestamp" })}}>
-        Date
-      </button>
+      <select
+        defaultValue={props.sortBy}
+        onChange={(e) => {
+          props.toggleSort({ posts: e.target.value })
+        }}
+      >
+        <option value="-voteScore">Vote</option>
+        <option value="-timestamp">Date</option>
+      </select>
 
       <hr />
 
