@@ -5,6 +5,7 @@ import moment from 'moment'
 function PostList (props) {
   return (
     <div>
+      <h3>Posts ({props.posts.length})</h3>
       <button onClick={() => {props.toggleSort({ posts: "-voteScore" })}}>
         Vote Score
       </button>
@@ -12,17 +13,22 @@ function PostList (props) {
       <button onClick={() => {props.toggleSort({ posts: "-timestamp" })}}>
         Date
       </button>
-      <br />
 
-      {props.posts.map(post =>
-        <div key={post.id}>
-          <Link to={`/${post.category}/${post.id}`}>
-            {post.title}
-          </Link>
-          Vote Score: {post.voteScore}
-          Date: {moment(post.timestamp).format("l")}
-        </div>
-      )}
+      <hr />
+
+
+      <ul className="list-group">
+        {props.posts.map(post =>
+          <li key={post.id} className="list-group-item">
+            <Link to={`/${post.category}/${post.id}`}>
+              {post.title}
+            </Link>
+            Vote Score: {post.voteScore}
+            Date: {moment(post.timestamp).format("l")}
+          </li>
+        )}
+      </ul>
+
     </div>
   )
 }
