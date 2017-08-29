@@ -23,6 +23,7 @@ class App extends Component {
             <div className="navbar-header">
               <Link
                 className="navbar-brand"
+                onClick={()=>{this.props.setCurrentCategory('all')}}
                 to='/'
               >
                 Readable
@@ -32,7 +33,10 @@ class App extends Component {
             <ul className="nav navbar-nav pull-right">
               {this.props.categories.map((category, i) =>
                 <li key={i} >
-                  <Link to={`/${category.path}`}>
+                  <Link
+                    to={`/${category.path}`}
+                    onClick={()=>{this.props.setCurrentCategory(category.name)}}
+                  >
                     {category.name}
                   </Link>
                 </li>
@@ -57,12 +61,9 @@ class App extends Component {
               key={i}
               exact
               path={`/${category.path}`}
-              render={() => (
-                <CategoryContainer name={category.name} />
-              )}
+              component={CategoryContainer}
             />
           )}
-
 
           <Route
             exact

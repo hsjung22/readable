@@ -5,12 +5,12 @@ import sortBy from 'sort-by'
 import Category from '../components/Category'
 import { toggleSort, setCurrentCategory } from '../actions'
 
-const mapStateToProps = ({ categories, posts, sortState, currentState }, props) => (
+const mapStateToProps = ({ categories, posts, sortState, currentState }) => (
   {
     categories,
     posts:
       posts
-        .filter(post => (post.category === props.name) && !post.deleted)
+        .filter(post => (post.category === currentState.category) && !post.deleted)
         .sort(sortBy(sortState.posts)),
     sortBy: sortState.posts,
     currentCategory: currentState.category,
