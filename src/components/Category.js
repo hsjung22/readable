@@ -2,7 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PostList from './PostList'
 
-function Category({ posts, toggleSort, sortBy, categories, currentCategory, setCurrentCategory }) {
+function Category(props) {
+  const {
+    posts,
+    toggleSort,
+    sortBy,
+    categories,
+    currentCategory,
+    setCurrentCategory,
+    votePost,
+  } = props
+
   return(
     <div>
       <div className="col-xs-2">
@@ -48,6 +58,7 @@ function Category({ posts, toggleSort, sortBy, categories, currentCategory, setC
           posts={posts}
           toggleSort={toggleSort}
           sortBy={sortBy}
+          votePost={votePost}
         />
       </div>
     </div>

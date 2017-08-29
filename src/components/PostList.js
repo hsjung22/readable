@@ -2,30 +2,65 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import moment from 'moment'
 
-function PostList (props) {
+function PostList ({ posts, sortBy, toggleSort, votePost }) {
   return (
     <div>
-      <h3>Posts ({props.posts.length})</h3>
-      <select
-        defaultValue={props.sortBy}
-        onChange={(e) => {
-          props.toggleSort({ posts: e.target.value })
-        }}
-      >
-        <option value="-voteScore">Vote</option>
-        <option value="-timestamp">Date</option>
-      </select>
+      <div className="row">
+        <div className="col-xs-6">
+          <h4>Posts {posts.length > 0 && `(${posts.length})`}</h4>
+        </div>
+        <div className="col-xs-6">
+          <div className="form-inline pull-right">
+            <div className="form-group">
+              <label>Sort by</label>
+              <select
+                className="form-control"
+                defaultValue={sortBy}
+                onChange={(e) => {
+                  toggleSort({ posts: e.target.value })
+                }}
+                >
+                  <option value="-voteScore">Vote</option>
+                  <option value="-timestamp">Date</option>
+                </select>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <hr />
 
 
       <ul className="list-group">
-        {props.posts.map(post =>
+        {posts.map(post =>
           <li key={post.id} className="list-group-item">
+
+            <button
+              onClick={() => {
+                votePost({
+                  id: post.id,
+                  option: "upVote",
+                })
+              }}
+            >
+              Up
+            </button>
+
+            <button
+              onClick={() => {
+                votePost({
+                  id: post.id,
+                  option: "downVote",
+                })
+              }}
+            >
+              Down
+            </button>
+
+            Vote Score: {post.voteScore}
             <Link to={`/${post.category}/${post.id}`}>
               {post.title}
             </Link>
-            Vote Score: {post.voteScore}
             Date: {moment(post.timestamp).format("l")}
           </li>
         )}
