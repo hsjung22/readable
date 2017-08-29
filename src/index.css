@@ -1,1 +1,22 @@
-body { padding-top: 70px; }
+body {
+  padding-top: 70px;
+  font-size: 14px;
+}
+
+.post-title {
+  font-size: 18px;
+}
+
+.category-link {
+  text-transform: capitalize;
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.sort-by-display{
+  margin-right: 10px;
+}

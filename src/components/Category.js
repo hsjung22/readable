@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PostList from './PostList'
+import CategorySideNav from './CategorySideNav'
 
 function Category(props) {
   const {
+    currentPosts,
     posts,
     toggleSort,
     sortBy,
@@ -16,46 +17,17 @@ function Category(props) {
   return(
     <div>
       <div className="col-xs-2">
-        <ul className="nav nav-pills nav-stacked">
-          <li
-            role="presentation"
-            className={
-              currentCategory === 'all'
-                ? "active"
-                : ""
-            }
-          >
-            <Link
-              to="/"
-              onClick={()=>{setCurrentCategory('all')}}
-            >
-              All
-            </Link>
-          </li>
-          {categories.map((category, i) =>
-            <li
-              key={i}
-              role="presentation"
-              className={
-                currentCategory === category.name
-                  ? "active"
-                  : ""
-              }
-            >
-              <Link
-                to={`/${category.path}`}
-                onClick={()=>{setCurrentCategory(category.name)}}
-              >
-                {category.name}
-              </Link>
-            </li>
-          )}
-        </ul>
+        <CategorySideNav
+          currentCategory={currentCategory}
+          setCurrentCategory={setCurrentCategory}
+          categories={categories}
+          posts={posts}
+        />
       </div>
 
       <div className="col-xs-10">
         <PostList
-          posts={posts}
+          posts={currentPosts}
           toggleSort={toggleSort}
           sortBy={sortBy}
           votePost={votePost}

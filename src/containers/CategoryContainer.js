@@ -7,11 +7,12 @@ import { toggleSort, setCurrentCategory, votePost } from '../actions'
 
 const mapStateToProps = ({ categories, posts, sortState, currentState }) => (
   {
-    categories,
-    posts:
+    categories: categories.map(category => category.name),
+    currentPosts:
       posts
         .filter(post => (post.category === currentState.category) && !post.deleted)
         .sort(sortBy(sortState.posts)),
+    posts: posts.filter(post => !post.deleted),
     sortBy: sortState.posts,
     currentCategory: currentState.category,
   }

@@ -37,7 +37,7 @@ class App extends Component {
                     to={`/${category.path}`}
                     onClick={()=>{this.props.setCurrentCategory(category.name)}}
                   >
-                    {category.name}
+                    <span className="category-link">{category.name}</span>
                   </Link>
                 </li>
               )}
