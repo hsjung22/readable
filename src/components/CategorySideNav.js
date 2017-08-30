@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function CategorySideNav({ currentCategory, setCurrentCategory, categories, posts }){
+function CategorySideNav({ currentCategory, categories, posts }){
 
   return (
     <ul className="nav nav-pills nav-stacked">
@@ -13,10 +13,7 @@ function CategorySideNav({ currentCategory, setCurrentCategory, categories, post
             : ""
         }
       >
-        <Link
-          to="/"
-          onClick={()=>{setCurrentCategory('all')}}
-        >
+        <Link to="/">
           All {posts.length > 0 && `(${posts.length})`}
         </Link>
       </li>
@@ -33,10 +30,7 @@ function CategorySideNav({ currentCategory, setCurrentCategory, categories, post
                 : ""
             }
           >
-            <Link
-              to={`/${category}`}
-              onClick={()=>{setCurrentCategory(category)}}
-            >
+            <Link to={`/${category}`}>
               <span className="category-link">{category} {postCount > 0 && `(${postCount})`}</span>
             </Link>
           </li>

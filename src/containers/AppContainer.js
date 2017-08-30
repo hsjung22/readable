@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import App from '../components/App';
 import { withRouter } from 'react-router-dom'
-import { fetchDefaults, setCurrentCategory } from '../actions';
+import { fetchDefaults } from '../actions';
 
 const mapStateToProps = ({ categories, posts }) => (
   {
@@ -12,7 +12,7 @@ const mapStateToProps = ({ categories, posts }) => (
 )
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchDefaults, setCurrentCategory }, dispatch)
+  bindActionCreators({ fetchDefaults }, dispatch)
 )
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

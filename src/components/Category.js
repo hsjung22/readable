@@ -6,11 +6,10 @@ function Category(props) {
   const {
     currentPosts,
     posts,
-    toggleSort,
     sortBy,
     categories,
-    currentCategory,
-    setCurrentCategory,
+    category,
+    toggleSort,
     votePost,
   } = props
 
@@ -18,8 +17,7 @@ function Category(props) {
     <div>
       <div className="col-xs-2">
         <CategorySideNav
-          currentCategory={currentCategory}
-          setCurrentCategory={setCurrentCategory}
+          currentCategory={category}
           categories={categories}
           posts={posts}
         />

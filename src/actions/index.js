@@ -8,18 +8,12 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const SET_CURRENT_COMMENT = 'SET_CURRENT_COMMENT'
-export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY'
 export const TOGGLE_SORT = 'TOGGLE_SORT'
 
 const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
   categories
 });
-
-export const  setCurrentCategory = category => ({
-  type: SET_CURRENT_CATEGORY,
-  category
-})
 
 const receivePosts = posts => ({
   type: RECEIVE_POSTS,

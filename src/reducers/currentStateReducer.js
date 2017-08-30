@@ -1,11 +1,9 @@
-import { SET_CURRENT_COMMENT, SET_CURRENT_CATEGORY } from '../actions'
+import { SET_CURRENT_COMMENT } from '../actions'
 
-const currentState = (state = { comment: null, post: null, category: "all" }, action) => {
+const currentState = (state = { comment: null, post: null }, action) => {
   switch(action.type) {
     case SET_CURRENT_COMMENT:
       return { ...state, comment: action.commentId }
-    case SET_CURRENT_CATEGORY:
-      return {...state, category: action.category}
     default:
       return state
   }

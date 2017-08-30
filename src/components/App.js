@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PencilIcon from 'react-icons/lib/fa/pencil'
-import HomeContainer from '../containers/HomeContainer'
 import CategoryContainer from '../containers/CategoryContainer'
 import PostContainer from '../containers/PostContainer'
 import PostNewContainer from '../containers/PostNewContainer'
@@ -21,22 +20,14 @@ class App extends Component {
         <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
-              <Link
-                className="navbar-brand"
-                onClick={()=>{this.props.setCurrentCategory('all')}}
-                to='/'
-              >
+              <Link className="navbar-brand" to='/'>
                 Readable
               </Link>
-
             </div>
             <ul className="nav navbar-nav pull-right">
               {this.props.categories.map((category, i) =>
                 <li key={i} >
-                  <Link
-                    to={`/${category.path}`}
-                    onClick={()=>{this.props.setCurrentCategory(category.name)}}
-                  >
+                  <Link to={`/${category.path}`}>
                     <span className="category-link">{category.name}</span>
                   </Link>
                 </li>
@@ -54,17 +45,16 @@ class App extends Component {
           <Route
             exact
             path='/'
-            component={HomeContainer}
+            render={() => <CategoryContainer category="all" />}
           />
           {this.props.categories.map((category, i) =>
             <Route
               key={i}
               exact
               path={`/${category.path}`}
-              component={CategoryContainer}
+              render={() => <CategoryContainer category={category.name} />}
             />
           )}
-
           <Route
             exact
             path='/posts/new'
@@ -84,7 +74,6 @@ class App extends Component {
               )}
             />
           )}
-
         </Switch>
       </div>
     )
