@@ -21,36 +21,63 @@ class PostNew extends Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Title:
-            <input
-              type="text"
-              ref={(input) => this.title = input}
-            />
-          </label>
-          <label>
-            Body:
-            <input
-              type="text"
-              ref={(input) => this.body = input}
-            />
-          </label>
-          <label>
-            Author:
-            <input
-              type="text"
-              ref={(input) => this.author = input}
-            />
-          </label>
-          <label>
-            Category:
-            <select ref={(input) => this.category = input}>
-              {this.props.categories.map((category, index) =>
-                <option key={index} value={category}>{category}</option>
-              )}
-            </select>
-          </label>
-          <input type="submit" value="Submit" />
+          <div className="panel panel-default">
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-xs-12 form-group">
+                  <input
+                    className="form-control"
+                    placeholder="Title"
+                    type="text"
+                    ref={(input) => this.title = input}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-xs-12 form-group">
+                  <textarea
+                    className="form-control"
+                    placeholder="Details"
+                    type="text"
+                    ref={(input) => this.body = input}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-xs-8 form-group">
+                  <input
+                    className="form-control"
+                    placeholder="Your Name"
+                    type="text"
+                    ref={(input) => this.author = input}
+                  />
+                </div>
+                <div className="col-xs-4 form-group">
+                  <select
+                    className="form-control"
+                    ref={(input) => this.category = input}
+                    defaultValue="default"
+                  >
+                    <option value="default" disabled>Select a category</option>
+                    {this.props.categories.map((category, index) =>
+                      <option key={index} value={category}>{category}</option>
+                    )}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="panel-footer">
+              <div className="row">
+                <div className="col-xs-12">
+                  <input
+                    className="btn btn-default pull-right"
+                    type="submit"
+                    value="Submit"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     )
