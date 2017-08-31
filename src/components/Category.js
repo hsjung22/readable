@@ -15,7 +15,7 @@ function Category(props) {
 
   return(
     <div>
-      <div className="col-xs-2">
+      <div className="col-sm-2">
         <CategorySideNav
           currentCategory={category}
           categories={categories}
@@ -23,7 +23,7 @@ function Category(props) {
         />
       </div>
 
-      <div className="col-xs-10">
+      <div className="col-sm-10">
         <PostList
           posts={currentPosts}
           toggleSort={toggleSort}

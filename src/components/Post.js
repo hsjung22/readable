@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import PostDetails from './PostDetails'
 import CommentContainer from '../containers/CommentContainer';
 
 class Post extends Component {
@@ -16,58 +16,20 @@ class Post extends Component {
       author: this.author.value,
       parentId: this.props.id,
     })
-
     // after submitting the request, "clear" the form
     this.body.value = ''
     this.author.value = ''
   }
 
   render() {
-    const { post, comments } = this.props
+    const { post, comments, votePost } = this.props
     return(
       <div className="container">
-        <div>
-          <Link to='/'>
-            Home
-          </Link>
-        </div>
+        <PostDetails
+          post={post}
+          votePost={votePost}
+        />
 
-
-        <h1>Post</h1>
-        <div>
-          <Link to={`/posts/${post.id}/edit`}>
-            Edit
-          </Link>
-        </div>
-
-        <button
-          onClick={() => {
-            this.props.votePost({
-              id: post.id,
-              option: "upVote",
-            })
-          }}
-        >
-          Up
-        </button>
-
-        <button
-          onClick={() => {
-            this.props.votePost({
-              id: post.id,
-              option: "downVote",
-            })
-          }}
-        >
-          Down
-        </button>
-
-        <h5>Vote Score:{post.voteScore}</h5>
-        <p>{post.timestamp}</p>
-        <p>{post.title}</p>
-        <p>{post.body}</p>
-        <p>{post.author}</p>
-        <p>{post.category}</p>
 
         <h1>Comments ({comments.length})</h1>
         <select

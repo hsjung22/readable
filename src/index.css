@@ -8,6 +8,19 @@ body {
   font-size: 18px;
 }
 
+.post-details-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.date-display {
+  font-style: italic;
+}
+
+.author-display {
+  margin-right: 10px;
+}
+
 .category-link {
   text-transform: capitalize;
 }

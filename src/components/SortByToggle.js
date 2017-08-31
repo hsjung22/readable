@@ -1,19 +1,18 @@
 import React from 'react'
 
-function CategoryHeader({ posts, sortBy, toggleSort }){
-  return(
+function sortByToggle({ sortBy, handletoggleSort }){
+
+  return (
     <div className="row">
-      <div className="col-xs-12">
+      <div className="col-sm-12">
         <div className="form-inline pull-right">
           <div className="form-group">
             <label className="sort-by-display">Sort by</label>
             <select
               className="form-control"
               defaultValue={sortBy}
-              onChange={(e) => {
-                toggleSort({ posts: e.target.value })
-              }}
-              >
+              onChange={(e) => handletoggleSort(e) }
+            >
                 <option value="-voteScore">Vote</option>
                 <option value="-timestamp">Date</option>
               </select>
@@ -24,4 +23,4 @@ function CategoryHeader({ posts, sortBy, toggleSort }){
   )
 }
 
-export default CategoryHeader
+export default sortByToggle

@@ -24,7 +24,7 @@ class PostNew extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="row">
-                <div className="col-xs-12 form-group">
+                <div className="col-sm-8 form-group">
                   <input
                     className="form-control"
                     placeholder="Title"
@@ -32,27 +32,7 @@ class PostNew extends Component {
                     ref={(input) => this.title = input}
                   />
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12 form-group">
-                  <textarea
-                    className="form-control"
-                    placeholder="Details"
-                    type="text"
-                    ref={(input) => this.body = input}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-8 form-group">
-                  <input
-                    className="form-control"
-                    placeholder="Your Name"
-                    type="text"
-                    ref={(input) => this.author = input}
-                  />
-                </div>
-                <div className="col-xs-4 form-group">
+                <div className="col-sm-4 form-group">
                   <select
                     className="form-control"
                     ref={(input) => this.category = input}
@@ -65,10 +45,30 @@ class PostNew extends Component {
                   </select>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-sm-12 form-group">
+                  <input
+                    className="form-control"
+                    placeholder="Your Name"
+                    type="text"
+                    ref={(input) => this.author = input}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-12 form-group">
+                  <textarea
+                    className="form-control"
+                    placeholder="Details"
+                    type="text"
+                    ref={(input) => this.body = input}
+                  />
+                </div>
+              </div>
             </div>
             <div className="panel-footer">
               <div className="row">
-                <div className="col-xs-12">
+                <div className="col-sm-12">
                   <input
                     className="btn btn-default pull-right"
                     type="submit"

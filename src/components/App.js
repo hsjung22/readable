@@ -34,7 +34,7 @@ class App extends Component {
               )}
               <li>
                 <Link to="/posts/new">
-                  <PencilIcon size={24}/> New Post
+                  <PencilIcon size={24} /> New Post
                 </Link>
               </li>
             </ul>
