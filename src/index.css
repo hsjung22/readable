@@ -1,6 +1,6 @@
 body {
   padding-top: 70px;
-  font-size: 14px;
+  font-size: 15px;
   background-color: #FAFAFA;
 }
 
@@ -8,9 +8,18 @@ body {
   font-size: 18px;
 }
 
+.comment-headers {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .post-details-title {
   font-size: 20px;
   font-weight: bold;
+}
+
+.vote-score-display {
+  font-size: 12px;
 }
 
 .date-display {

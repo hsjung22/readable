@@ -13,10 +13,14 @@ function PostList ({ posts, sortBy, toggleSort, votePost }) {
   return (
     <div>
       <div className="col-sm-10">
-        <SortByToggle
-          sortBy={sortBy}
-          handletoggleSort={handletoggleSort}
-        />
+        <div className="row">
+          <div className="col-sm-12">
+            <SortByToggle
+              sortBy={sortBy}
+              handletoggleSort={handletoggleSort}
+            />
+          </div>
+        </div>
         <hr />
         <ul className="list-group">
           {posts.map(post =>
@@ -25,7 +29,7 @@ function PostList ({ posts, sortBy, toggleSort, votePost }) {
                 <p className="post-title">{post.title}</p>
               </Link>
               <p className="date-display"><CalendarIcon size={20} /> {moment(post.timestamp).format("LL")}</p>
-              <p>Vote Score: {post.voteScore}</p>
+              <p className="vote-score-display">Vote Score: {post.voteScore}</p>
               <VoteButtons
                 id={post.id}
                 onVoteClick={votePost}

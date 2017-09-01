@@ -70,7 +70,7 @@ class App extends Component {
               exact
               path={`/${post.category}/${post.id}`}
               render={() => (
-                <PostContainer id={post.id} />
+                <PostContainer postId={post.id} />
               )}
             />
           )}
