@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Navbar, Button } from 'react-bootstrap';
 import PencilIcon from 'react-icons/lib/fa/pencil'
 import CategoryContainer from '../containers/CategoryContainer'
 import PostContainer from '../containers/PostContainer'
@@ -17,7 +18,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+        {/* <nav className="navbar navbar-inverse navbar-fixed-top"> */}
+        <Navbar inverse fixedTop>
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -47,7 +49,8 @@ class App extends Component {
               </ul>
             </div>
           </div>
-        </nav>
+        </Navbar>
+        {/* </nav> */}
 
         <Switch>
           <Route
