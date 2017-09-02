@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TrashIcon from 'react-icons/lib/fa/trash'
+import { Link } from 'react-router-dom'
 
 class PostEdit extends Component {
 
@@ -88,6 +89,12 @@ class PostEdit extends Component {
                       >
                         <TrashIcon size={18} />
                       </button>
+                      <Link
+                        className="btn btn-default pull-right"
+                        to={`/${post.category}/${post.id}`}
+                      >
+                        Cancel
+                      </Link>
                       <input
                         className="btn btn-default pull-right"
                         type="submit"
