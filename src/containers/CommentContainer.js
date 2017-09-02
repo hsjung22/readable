@@ -10,8 +10,6 @@ import {
 } from '../actions';
 
 const mapStateToProps = ({ comments, sortState }, props) => {
-  console.log('comments', comments)
-  // console.log('comments', comments)
   return (
     {
       comments:

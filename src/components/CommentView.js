@@ -1,46 +1,30 @@
 import React from 'react'
-import moment from 'moment'
+import EditIcon from 'react-icons/lib/fa/edit'
+import VoteButtons from './VoteButtons'
+import AuthorDateScore from './AuthorDateScore'
 
 function CommentView({ comment, setCurrentComment, voteComment, currentlyEditing }) {
   return(
     <div>
       <button
-        onClick={() => {
-          voteComment({
-            id: comment.id,
-            option: "upVote",
-          })
-        }}
-      >
-        Up
-      </button>
-
-      <button
-        onClick={() => {
-          voteComment({
-            id: comment.id,
-            option: "downVote",
-          })
-        }}
-      >
-        Down
-      </button>
-
-      <h5>{comment.voteScore}</h5>
-
-      <p>{comment.id}</p>
-      <p>{moment(comment.timestamp).format("l")}</p>
-      <p>{comment.body}</p>
-      <p>{comment.author}</p>
-      <button
         // disable edit button if an edit is in progress
         disabled={currentlyEditing}
+        className="btn btn-default pull-right"
         onClick={() => {
           setCurrentComment(comment.id)
         }}
       >
-        edit
+        <EditIcon size={24} /> Edit
       </button>
+
+      <AuthorDateScore entity={comment} />
+
+      <p>{comment.body}</p>
+      <VoteButtons
+        id={comment.id}
+        onVoteClick={voteComment}
+      />
+
     </div>
   )
 }

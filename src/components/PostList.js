@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import moment from 'moment'
-import CalendarIcon from 'react-icons/lib/fa/calendar'
 import SortByToggle from './SortByToggle'
 import VoteButtons from './VoteButtons'
+import AuthorDateScore from './AuthorDateScore'
 
 function PostList ({ posts, sortBy, toggleSort, votePost }) {
   const handletoggleSort = (e) => {
@@ -28,8 +27,7 @@ function PostList ({ posts, sortBy, toggleSort, votePost }) {
               <Link to={`/${post.category}/${post.id}`}>
                 <p className="post-title">{post.title}</p>
               </Link>
-              <p className="date-display"><CalendarIcon size={20} /> {moment(post.timestamp).format("LL")}</p>
-              <p className="vote-score-display">Vote Score: {post.voteScore}</p>
+              <AuthorDateScore entity={post} />
               <VoteButtons
                 id={post.id}
                 onVoteClick={votePost}
