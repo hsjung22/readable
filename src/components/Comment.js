@@ -52,8 +52,6 @@ class Comment extends Component {
                   />
                 </div>
               </div>
-            </div>
-            <div className="panel-footer">
               <div className="row">
                 <div className="col-sm-12">
                   <input
@@ -68,7 +66,7 @@ class Comment extends Component {
         </form>
 
         <div className="panel panel-default">
-          <div className="panel-body">
+          <div className="panel-heading">
             <div className="row">
               <div className="col-sm-8">
                 <p className="comment-headers">

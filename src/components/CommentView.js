@@ -14,7 +14,7 @@ function CommentView({ comment, setCurrentComment, voteComment, currentlyEditing
           setCurrentComment(comment.id)
         }}
       >
-        <EditIcon size={24} /> Edit
+        <EditIcon size={24} />
       </button>
 
       <AuthorDateScore entity={comment} />
