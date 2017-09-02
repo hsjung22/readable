@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TrashIcon from 'react-icons/lib/fa/trash'
 
 class PostEdit extends Component {
 
@@ -30,41 +31,73 @@ class PostEdit extends Component {
         {post &&
           <div>
             <form onSubmit={this.handleSubmit}>
-              <label>
-                Title:
-                <input
-                  type="text"
-                  ref={(input) => this.title = input}
-                  defaultValue={post.title}
-                />
-              </label>
-              <label>
-                Body:
-                <input
-                  type="text"
-                  ref={(input) => this.body = input}
-                  defaultValue={post.body}
-                />
-              </label>
-              <label>
-                Author:
-                <input
-                  type="text"
-                  ref={(input) => this.author = input}
-                  defaultValue={post.author}
-                />
-              </label>
-              <label>
-                Category:
-                <select defaultValue={post.category} ref={(input) => this.category = input}>
-                  {this.props.categories.map((category, index) =>
-                    <option key={index} value={category}>{category}</option>
-                  )}
-                </select>
-              </label>
-              <input type="submit" value="Submit" />
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div className="row">
+                    <div className="col-sm-8 form-group">
+                      <input
+                        className="form-control"
+                        placeholder="Title"
+                        type="text"
+                        defaultValue={post.title}
+                        ref={(input) => this.title = input}
+                      />
+                    </div>
+                    <div className="col-sm-4 form-group">
+                      <select
+                        className="form-control"
+                        defaultValue={post.category}
+                        ref={(input) => this.category = input}
+                      >
+                        {this.props.categories.map((category, index) =>
+                          <option key={index} value={category}>{category}</option>
+                        )}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-sm-12 form-group">
+                      <input
+                        className="form-control"
+                        placeholder="Your Name"
+                        defaultValue={post.author}
+                        type="text"
+                        ref={(input) => this.author = input}
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-sm-12 form-group">
+                      <textarea
+                        className="form-control"
+                        placeholder="Details"
+                        defaultValue={post.body}
+                        type="text"
+                        ref={(input) => this.body = input}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="panel-footer">
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <button
+                        className="btn btn-danger pull-right"
+                        type="button"
+                        onClick={()=>{this.handleDelete(post.id)}}
+                      >
+                        <TrashIcon size={18} />
+                      </button>
+                      <input
+                        className="btn btn-default pull-right"
+                        type="submit"
+                        value="Submit"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
-            <button onClick={()=>{this.handleDelete(post.id)}}>delete</button>
           </div>
         }
       </div>
