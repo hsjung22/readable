@@ -20,24 +20,32 @@ class App extends Component {
         <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
               <Link className="navbar-brand" to='/'>
                 Readable
               </Link>
             </div>
-            <ul className="nav navbar-nav pull-right">
-              {this.props.categories.map((category, i) =>
-                <li key={i} >
-                  <Link to={`/${category.path}`}>
-                    <span className="category-link">{category.name}</span>
+            <div className="collapse navbar-collapse" id="navbar-collapse">
+              <ul className="nav navbar-nav navbar-right">
+                {this.props.categories.map((category, i) =>
+                  <li key={i}>
+                    <Link to={`/${category.path}`}>
+                      <span className="category-link">{category.name}</span>
+                    </Link>
+                  </li>
+                )}
+                <li>
+                  <Link to="/posts/new">
+                    <PencilIcon size={24} /> New Post
                   </Link>
                 </li>
-              )}
-              <li>
-                <Link to="/posts/new">
-                  <PencilIcon size={24} /> New Post
-                </Link>
-              </li>
-            </ul>
+              </ul>
+            </div>
           </div>
         </nav>
 
