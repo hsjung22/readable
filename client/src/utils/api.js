@@ -5,11 +5,8 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-// const api = 'http://localhost:5001'
-const api = ''
-
 export const fetchCategories = () =>
-  fetch(`${api}/categories`, {
+  fetch("/categories", {
     method: 'GET',
     headers
   })
@@ -18,21 +15,21 @@ export const fetchCategories = () =>
 
 
 export const fetchPosts = () =>
-  fetch(`${api}/posts`, {
+  fetch("/posts", {
     method: 'GET',
     headers
   })
     .then(result => result.json())
 
 export const fetchComments = (id) =>
-  fetch(`${api}/posts/${id}/comments`, {
+  fetch(`/posts/${id}/comments`, {
     method: 'GET',
     headers
   })
     .then(result => result.json())
 
 export const createComment = ({ body, author, parentId }) =>
-  fetch(`${api}/comments`, {
+  fetch("/comments", {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -46,7 +43,7 @@ export const createComment = ({ body, author, parentId }) =>
     .then(result => result.json())
 
 export const updateComment = (comment) =>
-  fetch(`${api}/comments/${comment.id}`, {
+  fetch(`/comments/${comment.id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({...comment, timestamp: Date.now()}),
@@ -54,14 +51,14 @@ export const updateComment = (comment) =>
     .then(result => result.json())
 
 export const deleteComment = (commentId) =>
-  fetch(`${api}/comments/${commentId}`, {
+  fetch(`/comments/${commentId}`, {
     method: 'DELETE',
     headers,
   })
     .then(result => result.json())
 
 export const createPost = ({ title, body, author, category }) =>
-  fetch(`${api}/posts`, {
+  fetch("/posts", {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -76,7 +73,7 @@ export const createPost = ({ title, body, author, category }) =>
     .then(result => result.json())
 
 export const updatePost = (post) =>
-  fetch(`${api}/posts/${post.id}`, {
+  fetch(`/posts/${post.id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({...post, timestamp: Date.now()}),
@@ -84,14 +81,14 @@ export const updatePost = (post) =>
     .then(result => result.json())
 
 export const deletePost = (postId) =>
-  fetch(`${api}/posts/${postId}`, {
+  fetch(`/posts/${postId}`, {
     method: 'DELETE',
     headers,
   })
     .then(result => result.json())
 
 export const votePost = (postVote) =>
-  fetch(`${api}/posts/${postVote.id}`, {
+  fetch(`/posts/${postVote.id}`, {
     method: 'POST',
     headers,
     body: JSON.stringify(postVote),
@@ -99,7 +96,7 @@ export const votePost = (postVote) =>
     .then(result => result.json())
 
 export const voteComment = (commentVote) =>
-  fetch(`${api}/comments/${commentVote.id}`, {
+  fetch(`/comments/${commentVote.id}`, {
     method: 'POST',
     headers,
     body: JSON.stringify(commentVote),
