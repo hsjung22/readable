@@ -10,8 +10,11 @@ const comments = require('./comments')
 
 const app = express()
 
-app.use(express.static('public'))
 app.use(cors())
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 
 app.get('/', (req, res) => {
