@@ -5,7 +5,8 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-const api = 'http://localhost:5001'
+// const api = 'http://localhost:5001'
+const api = ''
 
 export const fetchCategories = () =>
   fetch(`${api}/categories`, {

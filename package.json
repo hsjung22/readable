@@ -1,28 +1,31 @@
 {
-  "name": "readable",
-  "version": "0.1.0",
-  "private": true,
+  "name": "reddit-clone-server",
+  "version": "0.0.1",
+  "description": "A server for the Udacity Reddit Clone project for ReactND",
+  "main": "index.js",
+  "keywords": [
+    "udacity",
+    "redux",
+    "readable",
+    "react"
+  ],
+  "author": "David Harris",
+  "license": "ISC",
   "dependencies": {
-    "bootstrap": "3",
-    "moment": "^2.18.1",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.2",
-    "react-dom": "^15.6.1",
-    "react-icons": "^2.2.5",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.1.2",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "sort-by": "^1.2.0",
-    "uuid": "^3.1.0"
-  },
-  "devDependencies": {
-    "react-scripts": "1.0.11"
+    "body-parser": "^1.17.1",
+    "clone": "^2.1.1",
+    "concurrently": "^3.5.0",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "4.1.1",
+    "redux": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"yarn run server\" \"yarn run client\"",
+    "server": "node server.js",
+    "client": "node start-client.js"
   }
 }
