@@ -24,7 +24,7 @@
     "redux": "^3.7.2"
   },
   "scripts": {
-    "start": "concurrently \"yarn run server\" \"yarn run client\"",
+    "start": "concurrently \"$npm_execpath run server\" \"$npm_execpath run client\"",
     "server": "node server.js",
     "client": "node start-client.js"
   }
