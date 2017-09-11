@@ -1,24 +1,5 @@
 import firebase from './fire'
 import uuidv4 from 'uuid/v4'
-const headers = {
-  'Authorization': 'whatever',
-  'Content-Type': 'application/json'
-}
-
-const postDefaultValues = {
-  id: uuidv4(),
-  voteScore: 0,
-  timestamp: Date.now(),
-  deleted: false,
-}
-
-const commentDefaultValues = {
-  id: uuidv4(),
-  voteScore: 0,
-  timestamp: Date.now(),
-  deleted: false,
-  parentDeleted: false,
-}
 
 const categoriesRef = firebase.database().ref('categories')
 const postsRef = firebase.database().ref('posts')
@@ -54,26 +35,39 @@ export const fetchComment = (commentId) =>
     .then(snapshot => snapshot.val())
 
 export const createPost = (post) => {
-  const { id } = postDefaultValues
+  const postDefaultValues = {
+    id: uuidv4(),
+    timestamp: Date.now(),
+    voteScore: 0,
+    deleted: false,
+  }
+
   return (
-    postRef(id)
+    postRef(postDefaultValues.id)
       .set({
         ...post,
         ...postDefaultValues,
       })
-      .then(() => fetchPost(id))
+      .then(() => fetchPost(postDefaultValues.id))
   )
 }
 
 export const createComment = (comment) => {
-  const { id } = commentDefaultValues
+  const commentDefaultValues = {
+    id: uuidv4(),
+    voteScore: 0,
+    timestamp: Date.now(),
+    deleted: false,
+    parentDeleted: false,
+  }
+
   return (
-    commentRef(id)
+    commentRef(commentDefaultValues.id)
       .set({
         ...comment,
         ...commentDefaultValues,
       })
-      .then(() => fetchComment(id))
+      .then(() => fetchComment(commentDefaultValues.id))
   )
 }
 
