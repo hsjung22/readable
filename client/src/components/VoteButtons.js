@@ -2,14 +2,14 @@ import React from 'react'
 import ArrowUp from 'react-icons/lib/fa/arrow-up'
 import ArrowDown from 'react-icons/lib/fa/arrow-down'
 
-function VoteButtons({ id, onVoteClick }) {
+function VoteButtons({ entity, onVoteClick }) {
   return (
     <div>
       <button
         className="btn btn-default"
         onClick={() => {
           onVoteClick({
-            id,
+            entity,
             option: "upVote",
           })
         }}
@@ -20,7 +20,7 @@ function VoteButtons({ id, onVoteClick }) {
         className="btn btn-default"
         onClick={() => {
           onVoteClick({
-            id,
+            entity,
             option: "downVote",
           })
         }}

@@ -1,104 +1,138 @@
+import firebase from './fire'
 import uuidv4 from 'uuid/v4'
-
 const headers = {
   'Authorization': 'whatever',
   'Content-Type': 'application/json'
 }
 
-export const fetchCategories = () =>
-  fetch("/categories", {
-    method: 'GET',
-    headers
-  })
-    .then(result => result.json())
-    .then(data => data.categories)
+const postDefaultValues = {
+  id: uuidv4(),
+  voteScore: 0,
+  timestamp: Date.now(),
+  deleted: false,
+}
 
+const commentDefaultValues = {
+  id: uuidv4(),
+  voteScore: 0,
+  timestamp: Date.now(),
+  deleted: false,
+  parentDeleted: false,
+}
+
+const categoriesRef = firebase.database().ref('categories')
+const postsRef = firebase.database().ref('posts')
+const commentsRef = firebase.database().ref('comments')
+const postRef = (postId) => firebase.database().ref(`posts/${postId}`)
+const commentRef = (commentId) => firebase.database().ref(`comments/${commentId}`)
+
+export const fetchCategories = () =>
+  categoriesRef.once('value')
+    .then(snapshot => snapshot.val())
 
 export const fetchPosts = () =>
-  fetch("/posts", {
-    method: 'GET',
-    headers
-  })
-    .then(result => result.json())
+  postsRef.once('value')
+    .then(snapshot => {
+      const posts = snapshot.val()
+      return Object.keys(posts).map(post => posts[post])
+    })
 
-export const fetchComments = (id) =>
-  fetch(`/posts/${id}/comments`, {
-    method: 'GET',
-    headers
-  })
-    .then(result => result.json())
+export const fetchPost = (postId) =>
+  postRef(postId).once('value')
+    .then(snapshot => snapshot.val())
 
-export const createComment = ({ body, author, parentId }) =>
-  fetch("/comments", {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      id: uuidv4(),
-      timestamp: Date.now(),
-      body,
-      author,
-      parentId,
-    }),
-  })
-    .then(result => result.json())
+export const fetchComments = (postId) =>
+  commentsRef.once('value')
+    .then(snapshot => {
+      const comments = snapshot.val()
+      const commentsArray = Object.keys(comments).map(comment => comments[comment])
+      return commentsArray.filter(ca => ca.parentId === postId)
+    })
+
+export const fetchComment = (commentId) =>
+  commentRef(commentId).once('value')
+    .then(snapshot => snapshot.val())
+
+export const createPost = (post) => {
+  const { id } = postDefaultValues
+  return (
+    postRef(id)
+      .set({
+        ...post,
+        ...postDefaultValues,
+      })
+      .then(() => fetchPost(id))
+  )
+}
+
+export const createComment = (comment) => {
+  const { id } = commentDefaultValues
+  return (
+    commentRef(id)
+      .set({
+        ...comment,
+        ...commentDefaultValues,
+      })
+      .then(() => fetchComment(id))
+  )
+}
 
 export const updateComment = (comment) =>
-  fetch(`/comments/${comment.id}`, {
-    method: 'PUT',
-    headers,
-    body: JSON.stringify({...comment, timestamp: Date.now()}),
-  })
-    .then(result => result.json())
+  commentRef(comment.id)
+    .update({
+      ...comment,
+      timestamp: Date.now(),
+    })
+    .then(() => fetchComment(comment.id))
+
 
 export const deleteComment = (commentId) =>
-  fetch(`/comments/${commentId}`, {
-    method: 'DELETE',
-    headers,
-  })
-    .then(result => result.json())
-
-export const createPost = ({ title, body, author, category }) =>
-  fetch("/posts", {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      id: uuidv4(),
+  commentRef(commentId)
+    .update({
+      deleted: true,
       timestamp: Date.now(),
-      title,
-      body,
-      author,
-      category,
-    }),
-  })
-    .then(result => result.json())
+    })
+    .then(() => fetchComment(commentId))
 
 export const updatePost = (post) =>
-  fetch(`/posts/${post.id}`, {
-    method: 'PUT',
-    headers,
-    body: JSON.stringify({...post, timestamp: Date.now()}),
-  })
-    .then(result => result.json())
+  postRef(post.id)
+    .update({
+      ...post,
+      timestamp: Date.now(),
+    })
+    .then(() => fetchPost(post.id))
 
 export const deletePost = (postId) =>
-  fetch(`/posts/${postId}`, {
-    method: 'DELETE',
-    headers,
-  })
-    .then(result => result.json())
+  postRef(postId)
+    .update({
+      deleted: true,
+      timestamp: Date.now(),
+    })
+    .then(() => fetchPost(postId))
 
-export const votePost = (postVote) =>
-  fetch(`/posts/${postVote.id}`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(postVote),
-  })
-    .then(result => result.json())
 
-export const voteComment = (commentVote) =>
-  fetch(`/comments/${commentVote.id}`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(commentVote),
-  })
-    .then(result => result.json())
+export const votePost = (postVote) => {
+  const voteScore =
+    postVote.option === "upVote"
+      ? ++postVote.entity.voteScore
+      : --postVote.entity.voteScore
+
+  return (
+    postRef(postVote.entity.id)
+      .update({ voteScore })
+      .then(() => fetchPost(postVote.entity.id))
+    )
+}
+
+export const voteComment = (commentVote) => {
+  const voteScore =
+    commentVote.option === "upVote"
+      ? ++commentVote.entity.voteScore
+      : --commentVote.entity.voteScore
+
+  return (
+    commentRef(commentVote.entity.id)
+      .update({ voteScore })
+      .then(() => fetchComment(commentVote.entity.id))
+    )
+}

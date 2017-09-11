@@ -21,7 +21,7 @@ function CommentView({ comment, setCurrentComment, voteComment, currentlyEditing
 
       <p>{comment.body}</p>
       <VoteButtons
-        id={comment.id}
+        entity={comment}
         onVoteClick={voteComment}
       />
 

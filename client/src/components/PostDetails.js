@@ -20,7 +20,7 @@ function PostDetails({ post, votePost }) {
 
         <p>{post.body}</p>
         <VoteButtons
-          id={post.id}
+          entity={post}
           onVoteClick={votePost}
         />
       </div>

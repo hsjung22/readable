@@ -29,7 +29,7 @@ function PostList ({ posts, sortBy, toggleSort, votePost }) {
               </Link>
               <AuthorDateScore entity={post} />
               <VoteButtons
-                id={post.id}
+                entity={post}
                 onVoteClick={votePost}
               />
             </li>
